@@ -1,0 +1,41 @@
+import pandas as pd
+
+def iniciar_grupo_con_datos():
+    equipos = ['Colombia', 'Portugal', 'RD Congo', 'Uzbekistan']
+    data = {
+        'Equipo': equipos,
+        'PJ': [3, 3, 3, 3],
+        'PG': [2, 1, 1, 1],
+        'PE': [0, 1, 1, 0],
+        'PP': [1, 1, 1, 2],
+        'Pts': [6, 4, 4, 3]
+    }
+    df = pd.DataFrame(data).set_index('Equipo')
+    return df
+
+def obtener_tabla_ordenada(df):
+    return df.sort_values(by=['Pts'], ascending=False)
+
+def main():
+    grupo_c = iniciar_grupo_con_datos()
+    
+    while True:  
+        print("      GESTOR DEL MUNDIAL  MENÚ PRINCIPAL")
+        print("1. Ver tabla de posiciones")
+        print("2. Salir")
+        
+        opcion = input("Escribe el número de opción y presiona Enter: ").strip()
+        
+        if opcion == "1":
+            print("\n TABLA DE POSICIONES FINAL (GRUPO C) ")
+            print(obtener_tabla_ordenada(grupo_c))
+            input("\n-> Presiona ENTER para regresar al menú...") 
+        elif opcion == "2":
+            print("\nSaliendo del programa. ¡Proceso terminado!")
+            break
+        else:
+            print("\n Opción no válida. Escribe solo 1 y 2.")
+            
+
+if __name__ == "__main__":
+    main()
